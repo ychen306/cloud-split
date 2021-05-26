@@ -21,5 +21,5 @@ COPY split.cpp /split/
 
 RUN mkdir split-build && \
       cd split-build && \
-      cmake /split -DCMAKE_INSTALL_PREFIX=/usr/bin && \
+      cmake /split -DCMAKE_INSTALL_PREFIX=/usr/bin -DCMAKE_BUILD_TYPE=Release && \
       make install
