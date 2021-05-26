@@ -16,17 +16,6 @@ static cl::opt<std::string>
 InputFilename(cl::Positional, cl::desc("<input bitcode file>"),
     cl::init("-"), cl::value_desc("filename"));
 
-static cl::opt<std::string>
-OutputFilename("o", cl::desc("Override output filename"),
-               cl::value_desc("filename"));
-
-static cl::opt<unsigned> NumOutputs("j", cl::Prefix, cl::init(2),
-                                    cl::desc("Number of output files"));
-
-static cl::opt<bool>
-    PreserveLocals("preserve-locals", cl::Prefix, cl::init(false),
-                   cl::desc("Split without externalizing locals"));
-
 int main(int argc, char **argv) {
   LLVMContext Context;
   SMDiagnostic Err;
