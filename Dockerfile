@@ -1,5 +1,6 @@
 FROM buildpack-deps:buster
 
+# get llvm
 RUN apt-get update && \
     apt-get install -y \
     apt-utils \
@@ -12,12 +13,9 @@ RUN apt-get update && \
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     ./llvm.sh 12 
 
-RUN apt-get update && apt-get install -y cmake
+RUN apt-get install -y cmake
 
-RUN mkdir /split
-
-COPY CMakeLists.txt /split/
-COPY split.cpp /split/
+ADD CMakeLists.txt split.cpp /split/
 
 RUN mkdir split-build && \
       cd split-build && \
