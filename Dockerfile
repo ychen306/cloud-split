@@ -1,4 +1,4 @@
-FROM node:12-buster
+FROM buildpack-deps:buster
 
 RUN apt-get update && \
     apt-get install -y \
@@ -14,7 +14,10 @@ RUN apt-get update && \
 
 RUN apt-get update && apt-get install -y cmake
 
-COPY . /split
+RUN mkdir /split
+
+COPY CMakeLists.txt /split/
+COPY split.cpp /split/
 
 RUN mkdir split-build && \
       cd split-build && \
